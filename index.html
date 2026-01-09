@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Über Zukunft Welle Fanzine</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier Prime", monospace;
+        line-height: 1.6;
+        color: #2c2c2c;
+        background: #f8f8f8;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        background: #fff;
+        border-bottom: 3px solid #000;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .masthead {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .magazine-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+      }
+
+      .nav-menu {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .nav-item {
+        text-decoration: none;
+        color: #000;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        border: 2px solid #000;
+        background: #000;
+        color: #fff;
+      }
+
+      /* Main Content */
+      .main-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        margin: 40px 0;
+      }
+
+      /* Featured Article */
+      .featured-article {
+        background: #fff;
+        border: 3px solid #000;
+        padding: 30px;
+        margin-bottom: 30px;
+      }
+
+      .article-category {
+        background: #000;
+        color: #fff;
+        padding: 5px 15px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+
+      .article-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        line-height: 1.2;
+      }
+
+      .article-excerpt {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #555;
+      }
+
+      .article-meta {
+        font-size: 0.9rem;
+        color: #888;
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+      }
+
+      /* Article Grid */
+      .articles-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .article-card {
+        background: #fff;
+        border: 2px solid #000;
+        padding: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .article-card:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      .card-category {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      .article-card:hover .card-category {
+        color: #ccc;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .card-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .sidebar-section {
+        background: #fff;
+        border: 2px solid #000;
+        padding: 20px;
+      }
+
+      .sidebar-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+      }
+
+      .mission-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .topics-list {
+        list-style: none;
+      }
+
+      .topics-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .topics-list li:hover {
+        background: #000;
+        color: #fff;
+        padding-left: 10px;
+      }
+
+      .topics-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* Goals Section */
+      .goals-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .goal-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .goal-item:hover {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+      }
+
+      .goal-icon {
+        font-size: 1.2rem;
+        min-width: 30px;
+      }
+
+      .goal-text {
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      /* Footer */
+      .footer {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 50px;
+      }
+
+      .footer-content {
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .main-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .magazine-title {
+          font-size: 1.8rem;
+        }
+
+        .nav-menu {
+          gap: 15px;
+        }
+
+        .nav-item {
+          font-size: 0.8rem;
+        }
+
+        .featured-article {
+          padding: 20px;
+        }
+
+        .article-title {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Typewriter Animation */
+      .typewriter {
+        overflow: hidden;
+        border-right: 3px solid #000;
+        white-space: nowrap;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="masthead">
+          <h1 class="magazine-title typewriter">Website im Aufbau...</h1>
+          <p class="subtitle">
+            Eine digitale Zeitschrift für junge Internationale mit Leidenschaft
+            für STEAM, Technologie, Kunst und Kultur
+          </p>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item active" onclick="showSection('home')"
+            >Aktuell</a
+          >
+          <a href="#" class="nav-item" onclick="showSection('zeit-sprachen')"
+            >Zeit Sprachen</a
+          >
+          <a href="#" class="nav-item" onclick="showSection('codechaos')"
+            >Codechaos</a
+          >
+          <a href="#" class="nav-item" onclick="showSection('grenzsprenger')"
+            >Grenzsprenger</a
+          >
+          <a href="#" class="nav-item" onclick="showSection('normbrecher')"
+            >Normbrecher</a
+          >
+          <a href="#" class="nav-item" onclick="showSection('about')"
+            >Über Uns</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="main-content">
+        <section class="content-area">
+          <article class="featured-article">
+            <span class="article-category"> STEAM Featured</span>
+            <h2 class="article-title">
+              Die Zukunft der Robotik: Wenn Maschinen träumen lernen
+            </h2>
+            <p class="article-excerpt">
+              Künstliche Intelligenz und Robotik verschmelzen zu einer neuen
+              Generation von Maschinen, die nicht nur rechnen, sondern auch
+              kreativ denken können. Ein Blick in die Labore junger Forscher aus
+              Berlin, Tokyo und São Paulo.
+            </p>
+            <div class="article-meta">
+              Von Alejandra Bárcena González | 15. November 2025 | 8 Min.
+              Lesezeit
+            </div>
+          </article>
+
+          <div class="articles-grid">
+            <article class="article-card" onclick="openArticle('quantum')">
+              <div class="card-category">Wissenschaft</div>
+              <h3 class="card-title">
+                Quantencomputer für Alle: Der neue Playground der Physik
+              </h3>
+              <p class="card-excerpt">
+                Wie junge Entwickler Quantenalgorithmen zugänglich machen und
+                dabei die Grenzen des Möglichen neu definieren.
+              </p>
+            </article>
+
+            <article class="article-card" onclick="openArticle('music')">
+              <div class="card-category">Kunst & Tech</div>
+              <h3 class="card-title">
+                Algorithmic Beats: Wenn KI Musik komponiert
+              </h3>
+              <p class="card-excerpt">
+                Eine Reise durch die Welt der generativen Musik und die
+                Künstler, die mit Algorithmen neue Klangwelten erschaffen.
+              </p>
+            </article>
+
+            <article
+              class="article-card"
+              onclick="openArticle('sustainability')"
+            >
+              <div class="card-category">Nachhaltigkeit</div>
+              <h3 class="card-title">
+                Green Code: Programmieren für den Planeten
+              </h3>
+              <p class="card-excerpt">
+                Wie nachhaltige Softwareentwicklung zur Lösung der Klimakrise
+                beitragen kann - Projekte aus aller Welt.
+              </p>
+            </article>
+
+            <article class="article-card" onclick="openArticle('culture')">
+              <div class="card-category">Kultur</div>
+              <h3 class="card-title">Digital Nomads: Arbeiten ohne Grenzen</h3>
+              <p class="card-excerpt">
+                Porträts junger Kreativer, die mit Laptop und Leidenschaft die
+                Welt bereisen und dabei Kulturen verbinden.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Warum „Überkunft Welle"?</h3>
+            <p class="mission-text">
+              Der Name ist ein Symbol: „Überkunft" steht für Zukunft und
+              Begegnung, „Welle" für Bewegung, Austausch und Energie. Zusammen
+              beschreiben sie eine Generation, die global denkt, kreativ handelt
+              und Wissen teilt.
+            </p>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Unser Ziel</h3>
+            <div class="goals-list">
+              <div class="goal-item">
+                <span class="goal-icon"></span>
+                <span class="goal-text">Alle leute weltweit inspirieren</span>
+              </div>
+              <div class="goal-item">
+                <span class="goal-icon"></span>
+                <span class="goal-text"
+                  >Multikulturalität und Sprachvielfalt fördern</span
+                >
+              </div>
+              <div class="goal-item">
+                <span class="goal-icon"></span>
+                <span class="goal-text"
+                  >Bildung, Technologie, Kunst und Kultur verbinden</span
+                >
+              </div>
+              <div class="goal-item">
+                <span class="goal-icon"></span>
+                <span class="goal-text"
+                  >Räume für Dialog und neue Ideen schaffen</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Zeit Sprachen</h3>
+            <ul class="topics-list">
+              <li onclick="filterByTopic('lebensgeschichten')">
+                Lebensgeschichten
+              </li>
+              <li onclick="filterByTopic('multikulturell')">Multikulturell</li>
+              <li onclick="filterByTopic('sprachreisen')">Fluchtgedanken</li>
+              <li onclick="filterByTopic('polyglott')">Polyglott Leben</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Tech & Code</h3>
+            <ul class="topics-list">
+              <li onclick="filterByTopic('codechaos')">Codechaos</li>
+              <li onclick="filterByTopic('datenjunkies')">Datenjunkies</li>
+              <li onclick="filterByTopic('maschinengeflüster')">
+                Maschinengeflüster
+              </li>
+              <li onclick="filterByTopic('stahlrebellen')">Stahlrebellen</li>
+              <li onclick="filterByTopic('orakel')">Orakel 2.0</li>
+              <li onclick="filterByTopic('techgeil')">Techgeil</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Kultur & Lifestyle</h3>
+            <ul class="topics-list">
+              <li onclick="filterByTopic('grenzsprenger')">Grenzsprenger</li>
+              <li onclick="filterByTopic('bassattacke')">Bassattacke</li>
+              <li onclick="filterByTopic('kopfkino')">Kopfkino Deluxe</li>
+              <li onclick="filterByTopic('papierrebellen')">Papierrebellen</li>
+              <li onclick="filterByTopic('stimmenrausch')">Stimmenrausch</li>
+              <li onclick="filterByTopic('habenwollen')">Habenwollen</li>
+              <li onclick="filterByTopic('normbrecher')">Normbrecher</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Mitmachen</h3>
+            <p class="mission-text">
+              Hast du ein spannendes Projekt oder eine Geschichte zu erzählen?
+              Wir suchen immer nach neuen Stimmen und frischen Perspektiven!
+            </p>
+            <button
+              onclick="showSubmissionForm()"
+              style="
+                background: #000;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-family: 'Courier Prime', monospace;
+                font-weight: 700;
+                cursor: pointer;
+                margin-top: 15px;
+                width: 100%;
+              "
+            >
+              ARTIKEL EINREICHEN
+            </button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>
+            © KONTAKT: alejandrobarcena@zukunftwellefanzine.de ADRESSE:
+            Landsberger Straße 68, München, Deutschland
+          </p>
+          <p style="margin-top: 10px; font-size: 0.8rem">
+            FOLGE UNS: Instagram · Pinterest · LinkedIn · Facebook © Zukunft
+            Welle Fanzine · München · DIY Kultur
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function showSection(section) {
+        // Remove active class from all nav items
+        document.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Add active class to clicked item
+        event.target.classList.add("active");
+
+        // Show/hide content based on section
+        const contentArea = document.querySelector(".content-area");
+
+        if (section === "about") {
+          contentArea.innerHTML = `
+                    <article class="featured-article">
+                        <span class="article-category"> Über Uns</span>
+                        <h2 class="article-title">Was ist Zukunft Welle?</h2>
+                        <p class="article-excerpt">
+                            Zukunft Welle Fanzine ist ein internationales, digitales Magazin für alle leute mit Interesse an STEAM  
+                            Wissenschaft, Technik, Ingenieurwesen, Kunst und Mathematik. Ziel der Zeitschrift ist es, nicht nur Wissen zu vermitteln, 
+                            sondern auch Dialog, Kreativität und interkulturellen Austausch zu fördern.
+                        </p>
+                        <p class="mission-text" style="margin-bottom: 20px;">
+                            Wir richten uns besonders an alle leute, die in einer globalisierten und digitalen Welt aufgewachsen sind. 
+                            Deshalb beschäftigen wir uns mit Diversität (sexuell, kulturell, neurodivers), Migration, Nachhaltigkeit und Zukunftstechnologien.
+                        </p>
+                    </article>
+
+                    <div class="about-sections" style="display: grid; gap: 30px;">
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title"> Wer steht hinter dem Projekt?</h3>
+                            <p class="mission-text" style="margin-bottom: 15px;">
+                                Ich bin <strong>Alejandra Bárcena</strong>, Kommunikationswissenschaftlerin, Künstlerin, Aktivistin und Unternehmerin. 
+                                Nach meinem Studium im Bereich Kommunikation und Identität habe ich über zehn Jahre Erfahrung in Journalismus, 
+                                Fotografie, Grafikdesign, Marketing und UX/UI-Design gesammelt.
+                            </p>
+                            <p class="mission-text" style="margin-bottom: 15px;">
+                                Meine Leidenschaft für Sprachen begann, als ich im Goethe-Institut Mexiko Deutsch lernte. Besonders die Bibliothek 
+                                war für mich ein Ort der Inspiration. Dort entstand die Idee, eines Tages ein eigenes Medium zu gründen, 
+                                das Bildung, Kultur und Sprachen miteinander verbindet.
+                            </p>
+                            <p class="mission-text">
+                                Heute arbeite ich in der digitalen Transformation als Projektmanagerin und UX/UI-Designerin. Parallel dazu studiere ich 
+                                Software Engineering und habe zusätzliche Ausbildungen in Künstlicher Intelligenz, Business Intelligence und 
+                                Full-Stack-Entwicklung absolviert.
+                            </p>
+                        </div>
+
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title"> Mission</h3>
+                            <p class="mission-text" style="margin-bottom: 15px;">
+                                Unsere Mission ist es, eine digitale Plattform für junge Menschen zu schaffen, die sich für STEAM 
+                                (Science, Technology, Engineering, Arts, Mathematics), Kultur und Sprachen begeistern. Wir wollen Wissen 
+                                zugänglich, kreativ und interaktiv machen  über Grenzen hinweg.
+                            </p>
+                            <p class="mission-text">
+                                Wir glauben, dass Bildung, Vielfalt und Innovation Schlüssel sind, um die Gesellschaft von morgen zu gestalten.
+                            </p>
+                        </div>
+
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title"> Vision</h3>
+                            <p class="mission-text" style="margin-bottom: 15px;">
+                                
+                            </p>
+                            <ul style="list-style: none; padding-left: 0; margin-bottom: 15px;">
+                                <li style="margin-bottom: 8px;">• neue Sprachen lernen</li>
+                                <li style="margin-bottom: 8px;">• Technologien verstehen und anwenden</li>
+                                <li style="margin-bottom: 8px;">• Kunst und Kultur entdecken</li>
+                                <li style="margin-bottom: 8px;">• Vielfalt als Stärke erleben</li>
+                            </ul>
+                            <p class="mission-text">
+                                Wir träumen von einer Welt, in der Wissen nicht exklusiv, sondern für alle frei und inspirierend ist.
+                            </p>
+                        </div>
+
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title"> Werte</h3>
+                            <div class="goals-list">
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Multikulturalität</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir feiern kulturelle Vielfalt und sehen sie als Chance für Innovation.</span>
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Vielfalt</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir geben Raum für unterschiedliche Stimmen: sexuelle, kulturelle, neurodiverse und soziale Diversität.</span>
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Neugier</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir fördern eine Haltung des lebenslangen Lernens.</span>
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Kreativität</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir verbinden Kunst, Wissenschaft und Technologie in neuen Formen.</span>
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Nachhaltigkeit</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir setzen uns für verantwortungsbewusstes Handeln in Gesellschaft, Wirtschaft und Umwelt ein.</span>
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <span class="goal-icon"></span>
+                                    <div>
+                                        <strong>Dialog</strong><br>
+                                        <span style="font-size: 0.85rem;">Wir schaffen ein Forum für offenen, respektvollen und internationalen Austausch.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title"> Meine Vision</h3>
+                            <p class="mission-text">
+                                In naher Zukunft werde ich eine Weiterbildung an der Technischen Universität München (TUM The Entrepreneurial University) machen. 
+                                Mein Ziel ist es, Technologie, Innovation und Kultur in einem interdisziplinären Projekt zusammenzuführen.
+                            </p>
+                            <p class="mission-text" style="margin-top: 15px;">
+                                Mit Zukunft Welle Fanzine möchte ich eine multikulturelle Plattform schaffen, die alle leute  ermöglicht, 
+                                sich für Sprachen, Wissenschaft, Kunst und Diversität zu begeistern und so aktiv die Zukunft mitzugestalten. 
+                            </p>
+                        </div>
+                    </div>
+                `;
+        } else {
+          // Return to home content
+          contentArea.innerHTML = `
+                    <article class="featured-article">
+                        <span class="article-category"> STEAM Featured</span>
+                        <h2 class="article-title">Die Zukunft der Robotik: Wenn Maschinen träumen lernen</h2>
+                        <p class="article-excerpt">
+                            Künstliche Intelligenz und Robotik verschmelzen zu einer neuen Generation von Maschinen, 
+                            die nicht nur rechnen, sondern auch kreativ denken können. Ein Blick in die Labore 
+                            junger Forscher aus Berlin, Tokyo und São Paulo.
+                        </p>
+                        <div class="article-meta">
+                            Zukunft Welle Fanzine | 2025 | 8 Min. Lesezeit
+                        </div>
+                    </article>
+
+                    <div class="articles-grid">
+                        <article class="article-card" onclick="openArticle('quantum')">
+                            <div class="card-category">Wissenschaft</div>
+                            <h3 class="card-title">Quantencomputer für Alle: Der neue Playground der Physik</h3>
+                            <p class="card-excerpt">Wie junge Entwickler Quantenalgorithmen zugänglich machen und dabei die Grenzen des Möglichen neu definieren.</p>
+                        </article>
+
+                        <article class="article-card" onclick="openArticle('music')">
+                            <div class="card-category">Kunst & Tech</div>
+                            <h3 class="card-title">Algorithmic Beats: Wenn KI Musik komponiert</h3>
+                            <p class="card-excerpt">Eine Reise durch die Welt der generativen Musik und die Künstler, die mit Algorithmen neue Klangwelten erschaffen.</p>
+                        </article>
+
+                        <article class="article-card" onclick="openArticle('sustainability')">
+                            <div class="card-category"> Nachhaltigkeit</div>
+                            <h3 class="card-title">Green Code: Programmieren für den Planeten</h3>
+                            <p class="card-excerpt">Wie nachhaltige Softwareentwicklung zur Lösung der Klimakrise beitragen kann - Projekte aus aller Welt.</p>
+                        </article>
+
+                        <article class="article-card" onclick="openArticle('culture')">
+                            <div class="card-category"> Kultur</div>
+                            <h3 class="card-title">Digital Nomads: Arbeiten ohne Grenzen</h3>
+                            <p class="card-excerpt">Porträts junger Kreativer, die mit Laptop und Leidenschaft die Welt bereisen und dabei Kulturen verbinden.</p>
+                        </article>
+                    </div>
+                `;
+        }
+
+        console.log(`Loading section: ${section}`);
+      }
+
+      function openArticle(articleId) {
+        // Simulate opening an article
+        alert(`Artikel wird geladen: ${articleId}`);
+      }
+
+      function filterByTopic(topic) {
+        // Simulate filtering by topic
+        console.log(`Filtering by topic: ${topic}`);
+
+        // Visual feedback
+        const clickedItem = event.target;
+        clickedItem.style.background = "#000";
+        clickedItem.style.color = "#fff";
+
+        setTimeout(() => {
+          clickedItem.style.background = "";
+          clickedItem.style.color = "";
+        }, 1000);
+      }
+
+      function showSubmissionForm() {
+        alert(
+          "Einreichungsformular wird geöffnet! Hier könnten Autoren ihre Artikel vorschlagen."
+        );
+      }
+
+      // Add some interactive typewriter effects
+      document.addEventListener("DOMContentLoaded", function () {
+        // Restart typewriter animation on page load
+        const title = document.querySelector(".typewriter");
+        title.style.animation = "none";
+        setTimeout(() => {
+          title.style.animation =
+            "typing 3s steps(40, end), blink-caret 0.75s step-end infinite";
+        }, 100);
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9bb2691773caeef2',t:'MTc2Nzk0NTcyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
